@@ -24,6 +24,8 @@ public class ViaCEP {
     private String Bairro;
     private String Localidade;
     private String Uf;
+    private String Ibge;
+    private String Gia;
 
     /**
      * Constrói uma nova classe
@@ -46,6 +48,8 @@ public class ViaCEP {
             this.Bairro = obj.getString("bairro");
             this.Localidade = obj.getString("localidade");
             this.Uf = obj.getString("uf");
+            this.Ibge = obj.getString("ibge");
+            this.Gia = obj.getString("gia");
         } else {
             throw new Exception("Não foi possível encontrar o CEP");
         }
@@ -103,6 +107,24 @@ public class ViaCEP {
      */
     public String getUf() {
         return this.Uf;
+    }
+    
+    /**
+     * Retorna o Ibge
+     * 
+     * @return 
+     */
+    public String getIbge() {
+        return this.Ibge;
+    }
+    
+    /**
+     * Retorna a Gia
+     * 
+     * @return 
+     */
+    public String getGia() {
+        return this.Gia;
     }
 
     /**

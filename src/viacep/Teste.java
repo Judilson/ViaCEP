@@ -1,9 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * PARG Desenvolvimento de Sistemas
+ * Pablo Alexander - pablo@parg.com.br
+ * 
+ * Obtem um CEP no ViaCEP
  */
 package viacep;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,6 +55,11 @@ public class Teste extends javax.swing.JFrame {
         setTitle("Consultar CEP");
 
         btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("CEP:");
 
@@ -62,6 +72,9 @@ public class Teste extends javax.swing.JFrame {
 
         jLabel2.setText("Logradouro:");
 
+        txtLogradouro.setEditable(false);
+
+        txtComplemento.setEditable(false);
         txtComplemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtComplementoActionPerformed(evt);
@@ -70,16 +83,20 @@ public class Teste extends javax.swing.JFrame {
 
         jLabel3.setText("Complemento:");
 
+        txtBairro.setEditable(false);
+
         jLabel4.setText("Bairro:");
 
         jLabel5.setText("Localidade:");
 
+        txtLocalidade.setEditable(false);
         txtLocalidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLocalidadeActionPerformed(evt);
             }
         });
 
+        txtUf.setEditable(false);
         txtUf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUfActionPerformed(evt);
@@ -90,6 +107,7 @@ public class Teste extends javax.swing.JFrame {
 
         jLabel7.setText("IBGE:");
 
+        txtIBGE.setEditable(false);
         txtIBGE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIBGEActionPerformed(evt);
@@ -97,6 +115,8 @@ public class Teste extends javax.swing.JFrame {
         });
 
         jLabel8.setText("Gia:");
+
+        txtGia.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,6 +221,43 @@ public class Teste extends javax.swing.JFrame {
     private void txtIBGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIBGEActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIBGEActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        // limpa
+        this.txtBairro.setText("");
+        this.txtComplemento.setText("");
+        this.txtGia.setText("");
+        this.txtIBGE.setText("");
+        this.txtLocalidade.setText("");
+        this.txtLogradouro.setText("");
+        this.txtUf.setText("");
+
+        // cep
+        String cep = this.txtCEP.getText();
+
+        // verifica se o CEP é válido
+        Pattern pattern = Pattern.compile("^[0-9]{5}-[0-9]{3}$");
+        Matcher matcher = pattern.matcher(cep);
+
+        // verifica
+        if (matcher.find()) {
+            try {
+                ViaCEP vCEP = new ViaCEP(cep);
+
+                this.txtBairro.setText(vCEP.getBairro());
+                this.txtComplemento.setText(vCEP.getComplemento());
+                this.txtGia.setText(vCEP.getGia());
+                this.txtIBGE.setText(vCEP.getIbge());
+                this.txtLocalidade.setText(vCEP.getLocalidade());
+                this.txtLogradouro.setText(vCEP.getLogradouro());
+                this.txtUf.setText(vCEP.getUf());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Ocorreu um erro!", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Favor informar um CEP válido!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
      * @param args the command line arguments
