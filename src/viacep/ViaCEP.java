@@ -29,10 +29,35 @@ public class ViaCEP {
 
     /**
      * Constrói uma nova classe
+     */
+    public ViaCEP() {
+        this.CEP = null;
+        this.Logradouro = null;
+        this.Complemento = null;
+        this.Bairro = null;
+        this.Localidade = null;
+        this.Uf = null;
+        this.Ibge = null;
+        this.Gia = null;
+    }
+    
+    /**
+     * Constrói uma nova classe e busca um CEP no ViaCEP
      *
      * @param cep
+     * @throws Exception caso ocorra algum erro
      */
     public ViaCEP(String cep) throws Exception {
+        this.buscar(cep);
+    }
+    
+    /**
+     * Busca um CEP no ViaCEP
+     *
+     * @param cep
+     * @throws Exception caso ocorra algum erro
+     */
+    public final void buscar(String cep) throws Exception {
         this.CEP = cep;
 
         // define a url
@@ -132,7 +157,7 @@ public class ViaCEP {
      *
      * @param urlToRead endereço
      * @return conteúdo remoto
-     * @throws Exception
+     * @throws Exception caso ocorra algum erro
      */
     public final String get(String urlToRead) throws Exception {
         StringBuilder result = new StringBuilder();

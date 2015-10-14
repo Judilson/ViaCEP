@@ -15,12 +15,15 @@ import javax.swing.JOptionPane;
  * @author PABLO
  */
 public class Teste extends javax.swing.JFrame {
+    private ViaCEP vCEP;
 
     /**
      * Creates new form Teste
      */
     public Teste() {
         initComponents();
+        
+        this.vCEP = null;
     }
 
     /**
@@ -242,7 +245,15 @@ public class Teste extends javax.swing.JFrame {
         // verifica
         if (matcher.find()) {
             try {
-                ViaCEP vCEP = new ViaCEP(cep);
+                if (this.vCEP == null) {
+                    this.vCEP = new ViaCEP(cep);
+                } else {
+                    if (!this.vCEP.getCep().equals(cep)) {
+                        this.vCEP.buscar(cep);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "O CEP já foi consultado, favor informar um CEP diferente!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
 
                 this.txtBairro.setText(vCEP.getBairro());
                 this.txtComplemento.setText(vCEP.getComplemento());
