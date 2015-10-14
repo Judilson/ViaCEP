@@ -1,14 +1,12 @@
 /*
- * PARG Desenvolvimento de Sistemas
- * Pablo Alexander - pablo@parg.com.br
- * 
- * Obtem um CEP no ViaCEP
+ * TesteBenchmark
+ * https://github.com/gilberto-torrezan
  */
 package viacep;
 
 /**
  * Teste do ViaCEP basedo em https://github.com/parg-programador/ViaCEP/issues/1
- * @author PABLO
+ * @author Gilberto Torrezan Filho
  */
 public class TesteBenchmark {
 

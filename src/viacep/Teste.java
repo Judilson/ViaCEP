@@ -11,8 +11,8 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author PABLO
+ * Classe Java/Swing para testar o webservice do ViaCEP
+ * @author Pablo Alexander da Rocha Gonçalves
  */
 public class Teste extends javax.swing.JFrame {
     private ViaCEP vCEP;

@@ -13,8 +13,8 @@ import java.net.URL;
 import org.json.JSONObject;
 
 /**
- *
- * @author PABLO
+ * Classe java para obter um CEP no ViaCEP
+ * @author Pablo Alexander da Rocha Gonçalves
  */
 public class ViaCEP {
 
