@@ -59,7 +59,7 @@ public class TesteBenchmark {
 ## O que é?
 Este é um projeto de Java/Swing feito no **NetBeans IDE 8.0.2** usando a **JDK 8**, mas que eu acredito que pode ser adaptado para qualquer JDK ou versão do Java.
 
-O projeto serve somente como teste para ver como funciona o procedimento para solictar um CEP e interpletar o JSON de retorno do **ViaCEP**, sendo que a classe principal do projeto é a *ViaCEP* (**ViaCEP.java**) que tem como dependência as classes da biblioteca **org.json** "http://www.json.org/json-pt.html".
+O projeto serve somente como teste para ver como funciona o procedimento para solictar um CEP e interpletar o JSON de retorno do **ViaCEP**, sendo que a classe principal do projeto é a *ViaCEP* (**ViaCEP.java**) que tem como dependência as classes da biblioteca **org.json** https://github.com/douglascrockford/JSON-java de @douglascrockford.
 
 ## Onde?
 Você pode estar se perguntando onde você pode usar essa classe e a resposta é em qualquer lugar que o Java permite, em minha experiência pessoal já usei em *Java Web JSP*, *Java/Swing*, *Android*.
