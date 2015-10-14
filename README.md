@@ -4,6 +4,58 @@ http://viacep.com.br/
 
 ![alt tag](http://www.parg.com.br/imagens.parg.com.br/viacep.png)
 
+## Alternativa
+Existe o projeto https://github.com/gilberto-torrezan/viacep do Gilberto que é excelente e tem suporte a GWT.
+
+## Teste Benchmark
+Pessoal foi adicionado um teste Benchmark como sugestão do Gilberto em https://github.com/parg-programador/ViaCEP/issues/1, mas recomendo executado o teste em uma conexão de IP dinâmico já que ele provavelmente vai exceder o limite de requisições no ViaCEP e bloquear o seu IP por tem indeterminado.
+
+Eu modifiquei o código do Gilberto e testei no https://github.com/parg-programador/ViaCEP, fiquem a vontade para executar os seus teste e favor enviar um feedback.
+
+```java
+/*
+ * TesteBenchmark
+ * https://github.com/gilberto-torrezan
+ */
+package viacep;
+
+/**
+ * Teste do ViaCEP basedo em https://github.com/parg-programador/ViaCEP/issues/1
+ * @author Gilberto Torrezan Filho
+ */
+public class TesteBenchmark {
+
+    public static void main(String[] args) {
+        System.out.println("Starting BenchmarkViaCEPClient...");
+
+        ViaCEP client = new ViaCEP();
+
+        String[] ceps = new String[]{"20930-040", "01311-000", "30140-010", "40026-040", "90010-273", "50030-000", "65010-970", "69900-094", "70050-000", "80010-150"};
+
+        int numSteps = 1000;
+        long sleep = 100;
+
+        for (int step = 0; step < numSteps; step++) {
+            for (int i = 0; i < ceps.length; i++) {
+                String cep = ceps[i];
+                try {
+                    client.buscar(cep);
+                    System.out.println(client.getLocalidade());
+
+                    Thread.sleep(sleep);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.exit(-1);
+                }
+            }
+        }
+
+        System.out.println("BenchmarkViaCEPClient finished.");
+    }
+    
+}
+```
+
 ## O que é?
 Este é um projeto de Java/Swing feito no **NetBeans IDE 8.0.2** usando a **JDK 8**, mas que eu acredito que pode ser adaptado para qualquer JDK ou versão do Java.
 
