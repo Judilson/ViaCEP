@@ -7,7 +7,7 @@ http://viacep.com.br/
 ## O que é?
 Este é um projeto de Java feito no **NetBeans IDE 8.0.2** usando a **JDK 8**, mas que eu acredito que pode ser adaptado para qualquer JDK ou versão do Java.
 
-O projeto é uma biblioteca jar que tem como teste o projeto ViaCEP-teste(https://github.com/parg-programador/ViaCEP-teste) para ver como funciona o procedimento para solictar um CEP e interpletar o JSON de retorno do **ViaCEP**, sendo que a classe principal do projeto é a *ViaCEP* (**ViaCEP.java**) que tem como dependência as classes da biblioteca **org.json** "http://www.json.org/json-pt.html".
+O projeto é uma biblioteca jar que tem como teste o projeto ViaCEP-teste(https://github.com/parg-programador/ViaCEP-teste) para ver como funciona o procedimento para solictar um CEP e interpletar o JSON de retorno do **ViaCEP**, sendo que a classe principal do projeto é a *ViaCEP* (**ViaCEP.java**) que tem como dependência as classes da biblioteca **org.json** https://github.com/douglascrockford/JSON-java de @douglascrockford.
 
 ## Onde?
 Você pode estar se perguntando onde você pode usar essa classe e a resposta é em qualquer lugar que o Java permite, em minha experiência pessoal já usei em *Java Web JSP*, *Java/Swing*, *Android*.
@@ -18,3 +18,6 @@ O **ViaCEP** é um serviço gratuito que serve como exemplo para muitos, então 
 Pode-se até criar um TIMESTAMP para registrar data que o CEP foi criado/atualizado para que a cada um determinado tempo o mesmo seja atualizado novamente através do ViaCEP.
 
 Se todos fizerem o melhor pensando no próximo vamos ter um excelente serviço rápido e estável.
+
+## Alternativa
+Existe o projeto https://github.com/gilberto-torrezan/viacep do Gilberto que é excelente e tem suporte a GWT.
