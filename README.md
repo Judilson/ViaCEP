@@ -2,7 +2,7 @@
 Projeto em Java para obter CEP do webservice ViaCEP
 http://viacep.com.br/
 
-![alt tag](http://www.parg.com.br/imagens.parg.com.br/viacep.png)
+![alt tag](https://cloud.githubusercontent.com/assets/15053271/10401225/fcf30d8c-6e93-11e5-8a5d-ca8dac30d93b.png)
 
 ## Novidade
 Agora o projeto conta com uma interface para eventos (ViaCEPEvents), assim você pode melhorar o seu projeto implementando *onCEPSuccess* e *onCEPError*, veja esse exemplo:
