@@ -80,7 +80,7 @@ public class ViaCEP {
             this.Ibge = obj.getString("ibge");
             this.Gia = obj.getString("gia");
         } else {
-            throw new ViaCEPException("Não foi possível encontrar o CEP", cep);
+            throw new ViaCEPException("Não foi possível encontrar o CEP", cep, ViaCEPException.class.getName());
         }
     }
 
@@ -178,9 +178,9 @@ public class ViaCEP {
             }
             
         } catch (MalformedURLException | ProtocolException ex) {
-            throw new ViaCEPException(ex.getMessage());
+            throw new ViaCEPException(ex.getMessage(), ex.getClass().getName());
         } catch (IOException ex) {
-            throw new ViaCEPException(ex.getMessage());
+            throw new ViaCEPException(ex.getMessage(), ex.getClass().getName());
         }
         
         return result.toString();

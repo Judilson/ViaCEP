@@ -12,16 +12,19 @@ package viacep;
  */
 public class ViaCEPException extends Exception {
     private String CEP;
+    private String Classe;
     
     /**
      * Gera uma nova exceção
      * 
      * @param message descrição do erro
+     * @param classe classe da excessão original
      */
-    public ViaCEPException(String message) {
+    public ViaCEPException(String message, String classe) {
         super(message);
         
         this.CEP = "";
+        this.Classe = classe;
     }
     
     /**
@@ -29,11 +32,13 @@ public class ViaCEPException extends Exception {
      * 
      * @param message descrição do erro
      * @param cep CEP que foi usado durante o processo
+     * @param classe classe da excessão original
      */
-    public ViaCEPException(String message, String cep) {
+    public ViaCEPException(String message, String cep, String classe) {
         super(message);
         
         this.CEP = cep;
+        this.Classe = classe;
     }
     
     /**
@@ -61,5 +66,13 @@ public class ViaCEPException extends Exception {
      */
     public boolean hasCEP() {
         return !this.CEP.isEmpty();
+    }
+    
+    /**
+     * Retorna a classe da excessão original
+     * @return 
+     */
+    public String getClasse() {
+        return Classe;
     }
 }
