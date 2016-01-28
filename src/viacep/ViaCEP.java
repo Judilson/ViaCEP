@@ -22,6 +22,7 @@ import org.json.JSONObject;
  */
 public class ViaCEP {
 
+    // pripriedades do CEP
     private String CEP;
     private String Logradouro;
     private String Complemento;
@@ -30,12 +31,16 @@ public class ViaCEP {
     private String Uf;
     private String Ibge;
     private String Gia;
+    
+    // váriaveis internas
+    private final ViaCEPEvents Events;
 
     /**
      * Constrói uma nova classe
+     * 
+     * @param events eventos para a classe
      */
-    public ViaCEP() {
-        this.CEP = null;
+    public ViaCEP(ViaCEPEvents events) {
         this.Logradouro = null;
         this.Complemento = null;
         this.Bairro = null;
@@ -43,8 +48,35 @@ public class ViaCEP {
         this.Uf = null;
         this.Ibge = null;
         this.Gia = null;
+        this.Events = events;
+    }
+    
+    /**
+     * Constrói uma nova classe
+     */
+    public ViaCEP() {
+        this.Logradouro = null;
+        this.Complemento = null;
+        this.Bairro = null;
+        this.Localidade = null;
+        this.Uf = null;
+        this.Ibge = null;
+        this.Gia = null;
+        this.Events = null;
     }
 
+    /**
+     * Constrói uma nova classe e busca um CEP no ViaCEP
+     *
+     * @param events eventos para a classe
+     * @param cep
+     * @throws viacep.ViaCEPException caso ocorra algum erro
+     */
+    public ViaCEP(String cep, ViaCEPEvents events) throws ViaCEPException {
+        this.Events = events;
+        this.buscar(cep);
+    }
+    
     /**
      * Constrói uma nova classe e busca um CEP no ViaCEP
      *
@@ -52,6 +84,7 @@ public class ViaCEP {
      * @throws viacep.ViaCEPException caso ocorra algum erro
      */
     public ViaCEP(String cep) throws ViaCEPException {
+        this.Events = null;
         this.buscar(cep);
     }
 
@@ -79,7 +112,17 @@ public class ViaCEP {
             this.Uf = obj.getString("uf");
             this.Ibge = obj.getString("ibge");
             this.Gia = obj.getString("gia");
+            
+            // verifica os Eventos
+            if (Events instanceof ViaCEPEvents) {
+                Events.onCEPSuccess(this);
+            }
         } else {
+            // verifica os Eventos
+            if (Events instanceof ViaCEPEvents) {
+                Events.onCEPError(CEP);
+            }
+            
             throw new ViaCEPException("Não foi possível encontrar o CEP", cep, ViaCEPException.class.getName());
         }
     }
@@ -178,8 +221,18 @@ public class ViaCEP {
             }
             
         } catch (MalformedURLException | ProtocolException ex) {
+            // verifica os Eventos
+            if (Events instanceof ViaCEPEvents) {
+                Events.onCEPError(CEP);
+            }
+            
             throw new ViaCEPException(ex.getMessage(), ex.getClass().getName());
         } catch (IOException ex) {
+            // verifica os Eventos
+            if (Events instanceof ViaCEPEvents) {
+                Events.onCEPError(CEP);
+            }
+            
             throw new ViaCEPException(ex.getMessage(), ex.getClass().getName());
         }
         
