@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class ViaCEP {
     
     // constantes
-    public static final double VIACEP_VERSAO = 3.1;
+    public static final double VIACEP_VERSAO = 0.31;
 
     // pripriedades do CEP
     private String CEP;
