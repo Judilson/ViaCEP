@@ -21,6 +21,9 @@ import org.json.JSONObject;
  * @author Pablo Alexander da Rocha Gonçalves
  */
 public class ViaCEP {
+    
+    // constantes
+    public static final double VIACEP_VERSAO = 3.1;
 
     // pripriedades do CEP
     private String CEP;
