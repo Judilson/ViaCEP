@@ -4,7 +4,7 @@
  * 
  * Obtem um CEP no ViaCEP
  */
-package viacep;
+package br.com.parg.viacep;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -70,7 +70,7 @@ public class ViaCEP {
      *
      * @param events eventos para a classe
      * @param cep
-     * @throws viacep.ViaCEPException caso ocorra algum erro
+     * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
      */
     public ViaCEP(String cep, ViaCEPEvents events) throws ViaCEPException {
         this.Events = events;
@@ -81,7 +81,7 @@ public class ViaCEP {
      * Constrói uma nova classe e busca um CEP no ViaCEP
      *
      * @param cep
-     * @throws viacep.ViaCEPException caso ocorra algum erro
+     * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
      */
     public ViaCEP(String cep) throws ViaCEPException {
         this.Events = null;
@@ -92,7 +92,7 @@ public class ViaCEP {
      * Busca um CEP no ViaCEP
      *
      * @param cep
-     * @throws viacep.ViaCEPException caso ocorra algum erro
+     * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
      */
     public final void buscar(String cep) throws ViaCEPException {
         this.CEP = cep;
@@ -204,7 +204,7 @@ public class ViaCEP {
      *
      * @param urlToRead endereço
      * @return conteúdo remoto
-     * @throws viacep.ViaCEPException caso ocorra algum erro
+     * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
      */
     public final String get(String urlToRead) throws ViaCEPException {
         StringBuilder result = new StringBuilder();

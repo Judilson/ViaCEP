@@ -4,7 +4,7 @@
  * 
  * Obtem um CEP no ViaCEP
  */
-package viacep;
+package br.com.parg.viacep;
 
 /**
  * Classe para registrar uma exceção de CEP
