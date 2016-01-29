@@ -38,6 +38,18 @@ public abstract class ViaCEPBase {
     
     // métodos abstratos
     public abstract void buscar(String cep) throws ViaCEPException;
+    public abstract void buscarCEP(CEP cep) throws ViaCEPException;
+    
+    /**
+     * Busca um CEP usando um endereço
+     * @param Uf estado
+     * @param Localidade cidade
+     * @param Logradouro nome ou parte do nome da rua, av, viela...
+     * @throws br.com.parg.viacep.ViaCEPException
+     */
+    public void buscarCEP(String Uf, String Localidade, String Logradouro) throws ViaCEPException {
+        buscarCEP(new CEP(Logradouro, Localidade, Uf));
+    }
     
     /**
      * Retona o index atual;
@@ -45,6 +57,14 @@ public abstract class ViaCEPBase {
      */
     public int getIndex() {
         return index;
+    }
+    
+    /**
+     * Retorna o total de CEP's
+     * @return 
+     */
+    public int getSize() {
+        return CEPs.size();
     }
     
     /**
@@ -126,7 +146,7 @@ public abstract class ViaCEPBase {
      * @return conteúdo remoto
      * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
      */
-    public final String get(String urlToRead) throws ViaCEPException {
+    public final String getHttpGET(String urlToRead) throws ViaCEPException {
         StringBuilder result = new StringBuilder();
 
         try {
