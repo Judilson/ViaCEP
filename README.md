@@ -1,3 +1,5 @@
+Este projeto foi movido para https://gitlab.com/parg-lgpl/ViaCEP
+
 # ViaCEP
 Projeto em Java para obter CEP do webservice ViaCEP
 http://viacep.com.br/
